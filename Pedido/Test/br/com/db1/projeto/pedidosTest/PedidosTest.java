@@ -1,15 +1,17 @@
+package br.com.db1.projeto.pedidosTest;
+
+    
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 
 import br.com.db1.projeto.pedidos.Cliente;
 import br.com.db1.projeto.pedidos.Pedido;
-import br.com.db1.projeto.pedidos.PedidoItem;
 import br.com.db1.projeto.pedidos.Produto;
 import br.com.db1.projeto.pedidos.StatusCliente;
 import br.com.db1.projeto.pedidos.StatusPedido;
 
-public class pedidosTest {
+public class PedidosTest {
 	
 	private Pedido pedido;
 	Produto prod1 = new Produto("12345","Manga",10.0);
