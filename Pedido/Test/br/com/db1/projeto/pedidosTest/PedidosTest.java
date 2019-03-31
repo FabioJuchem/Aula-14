@@ -14,6 +14,7 @@ import br.com.db1.projeto.pedidos.StatusPedido;
 public class PedidosTest {
 	
 	private Pedido pedido;
+
 	Produto prod1 = new Produto("12345","Manga",10.0);
 	Produto prod2 = new Produto("54321","Pamonha", 5.0);
 	
@@ -21,8 +22,8 @@ public class PedidosTest {
 	@Before
 	public void init() {
 		Cliente cliente = new Cliente("Fabio Juchem","12345678911",StatusCliente.ATIVO);
-		
 		pedido = new Pedido(StatusPedido.ABERTO,cliente,"1010");
+		
 	}
 	@Test
 	public void deveAdicionarItens() {
@@ -30,5 +31,26 @@ public class PedidosTest {
 		pedido.adicionarItensAoPedido(prod2,1.0);
 		Assert.assertEquals(2,pedido.getItens().size());
 	}
+	@Test
+	public void deveRemoverItens() {
+		pedido.adicionarItensAoPedido(prod1,1.0);
+		pedido.adicionarItensAoPedido(prod2,1.0);
+		pedido.removerProdutoPassandoPosicao(1);
+		Assert.assertEquals(1,pedido.getItens().size());
+	}
+	@Test
+	public void deveRetornarNomeDoCLiente() {
+		pedido.getCliente().getNome();
+		Assert.assertEquals("Fabio Juchem",pedido.getCliente().getNome());
+	}
+	@Test(expected = RuntimeException.class)
+	public void deveRetornarExceptionDeMaximoDeItens() {
+		pedido.adicionarItensAoPedido(prod1,11.0);
+	
+	}
+
+	
+
+	
 
 }
