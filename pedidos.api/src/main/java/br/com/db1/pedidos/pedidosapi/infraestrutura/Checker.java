@@ -1,7 +1,5 @@
 package br.com.db1.pedidos.pedidosapi.infraestrutura;
 
-import java.util.List;
-
 public class Checker {
 	
 	public static void notNull(Object value, String field){
@@ -30,11 +28,11 @@ public class Checker {
 			throw new RuntimeException("Quantidade de itens excedida");
 		}
 	}
-	public static void quantidadeMaximadeProdutos(List<PedidoItem> produtos,String field) {
-		if(produtos.size() > 10) {
-			throw new RuntimeException("Quantidade de produtos excedida");
-		}
-	}
+//	public static void quantidadeMaximadeProdutos(List<PedidoItem> produtos,String field) {
+//		if(produtos.size() > 10) {
+//			throw new RuntimeException("Quantidade de produtos excedida");
+//		}
+//	}
 	
 
 	

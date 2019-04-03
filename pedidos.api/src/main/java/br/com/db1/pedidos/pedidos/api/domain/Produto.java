@@ -1,4 +1,4 @@
-package br.com.db1.pedidos.pedidosapi.domain;
+package br.com.db1.pedidos.pedidos.api.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +30,7 @@ public class Produto {
 	@Column(name = "status",length=30, nullable = false)
 	private ProdutoStatus status;
 
+	protected Produto(){}
 	
 	//construtores
 	public Produto(String codigo, String nome, Double valor) {
@@ -58,8 +59,8 @@ public class Produto {
 	public ProdutoStatus getStatus(){
 		return this.status;
 	}
-	public void Inativar(ProdutoStatus status){
-		this.status = status;
+	public void Inativar(){
+		this.status = ProdutoStatus.INATIVO;
 	}
 	public boolean produtoIsAtivo(){
 		if(this.status == ProdutoStatus.ATIVO){
