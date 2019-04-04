@@ -1,4 +1,4 @@
-package br.com.db1.pedidos.pedidos.api.domain;
+package br.com.db1.pedidos.pedidos.api.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
