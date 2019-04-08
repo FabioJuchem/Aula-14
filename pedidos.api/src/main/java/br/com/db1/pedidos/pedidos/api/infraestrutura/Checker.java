@@ -1,4 +1,4 @@
-package br.com.db1.pedidos.pedidosapi.infraestrutura;
+package br.com.db1.pedidos.pedidos.api.infraestrutura;
 
 public class Checker {
 	

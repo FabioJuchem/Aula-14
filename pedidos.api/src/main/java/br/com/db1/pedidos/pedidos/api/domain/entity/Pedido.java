@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.db1.pedidos.pedidosapi.infraestrutura.Checker;
+import br.com.db1.pedidos.pedidos.api.infraestrutura.Checker;
 
 @Entity
 @Table(name = "pedido_historico")

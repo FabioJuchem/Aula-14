@@ -1,4 +1,4 @@
-package br.com.db1.pedidos.pedidosapi.services;
+package br.com.db1.pedidos.pedidos.api.services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.db1.pedidos.pedidos.api.domain.dto.ProdutoDTO;
 import br.com.db1.pedidos.pedidos.api.domain.entity.Produto;
+import br.com.db1.pedidos.pedidos.api.domain.entity.ProdutoStatus;
 import br.com.db1.pedidos.pedidos.api.repositorio.ProdutoRepository;
 
 @Service
@@ -18,7 +19,7 @@ public class ProdutoService {
 	private ProdutoRepository produtoRepository;
 	
 	public List<ProdutoDTO> getAll(){
-		Iterable<Produto> produtosDataBase = produtoRepository.findAll();
+		Iterable<Produto> produtosDataBase = produtoRepository.findByStatus(ProdutoStatus.ATIVO);
 		Iterator<Produto> iterator = produtosDataBase.iterator();
 		
 		List<ProdutoDTO> produtos = new ArrayList<>();

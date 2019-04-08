@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.db1.pedidos.pedidosapi.infraestrutura.Checker;
+import br.com.db1.pedidos.pedidos.api.infraestrutura.Checker;
 
 @Entity
 @Table(name = "pedido_item")
