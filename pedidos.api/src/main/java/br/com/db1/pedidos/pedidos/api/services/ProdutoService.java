@@ -1,8 +1,7 @@
 package br.com.db1.pedidos.pedidos.api.services;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +16,28 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+
+	public List<ProdutoDTO> getAllActive() {
+		return this.getByStatus(ProdutoStatus.ATIVO);
+	}
 	
-	public List<ProdutoDTO> getAll(){
-		Iterable<Produto> produtosDataBase = produtoRepository.findByStatus(ProdutoStatus.ATIVO);
-		Iterator<Produto> iterator = produtosDataBase.iterator();
-		
-		List<ProdutoDTO> produtos = new ArrayList<>();
-		
-		while(iterator.hasNext()){
-			Produto next = iterator.next();
-			ProdutoDTO produtoDTO = new ProdutoDTO(next.getCodigo(), next.getNome(),next.getValor());
-			produtos.add(produtoDTO);
-		}
-		
-		return produtos;
+	public List<ProdutoDTO> getByCodigo(String codigo){
+		return produtoRepository.findByCodigo(codigo).stream().map(
+				produto -> this.produtoToDto(produto)).collect(Collectors.toList());
+	}
+	
+	
+	public List<ProdutoDTO> getByStatus(ProdutoStatus status){
+		return produtoRepository.findByStatus(ProdutoStatus.ATIVO).stream().map(
+				produto -> this.produtoToDto(produto)).collect(Collectors.toList());
+	}
+	public ProdutoDTO salvar(ProdutoDTO dto){
+		Produto produto = new Produto(dto.getCodigo(),dto.getNome(),dto.getValor());
+		Produto produtoSalvo = produtoRepository.save(produto);
+		return this.produtoToDto(produtoSalvo);
+	}
+	
+	private ProdutoDTO produtoToDto(Produto produto){
+		return new ProdutoDTO(produto.getCodigo(),produto.getNome(),produto.getValor());
 	}
 }

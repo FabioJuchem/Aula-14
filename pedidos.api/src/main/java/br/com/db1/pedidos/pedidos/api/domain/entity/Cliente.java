@@ -17,46 +17,65 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "nome",length=100, nullable = false )
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
-	@Column(name = "cpf",length=11, nullable = false )
+	@Column(name = "cpf", length = 11, nullable = false)
 	private String cpf;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "status",length=30, nullable = false)
+	@Column(name = "status", length = 30, nullable = false)
 	private StatusCliente status;
+
+	public Cliente(String string, String string2, StatusCliente statusCliente) {
+	}
 	
-	protected Cliente(){}
 
 	// construtores
+	public Cliente(){}
+	
 	public Cliente(String nome, String cpf) {
 		Checker.notNull(nome, "nome");
 		Checker.notNull(cpf, "cpf");
 		Checker.tamanhoCpfIncorreto(cpf, "cpf");
-	
+		
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.status = StatusCliente.ATIVO;
 	}
 
+	public void setCpf(String cpf){
+		Checker.notNull(cpf, "cpf");
+		Checker.tamanhoCpfIncorreto(cpf, "cpf");
+		this.cpf = cpf;
+	}
+	public void setNome(String nome){
+		Checker.notNull(nome, "nome");
+		this.nome = nome;
+	}
 	
-	//metodos
+	// metodos
 	public String getNome() {
 		return this.nome;
 	}
 
-	public String getCPF() {
+	public String getCpf() {
 		return this.cpf;
 	}
+
 	public StatusCliente getStatus() {
 		return this.status;
 	}
-	public void inativarCliente(){
+
+	public void inativarCliente() {
 		this.status = StatusCliente.INATIVO;
 	}
+
 	public boolean isAtivo() {
 		return StatusCliente.ATIVO.equals(this.status);
 	}
-	
 
+	public Long getId() {
+		return this.id;
+	}
 
 }

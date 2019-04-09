@@ -1,22 +1,38 @@
 package br.com.db1.pedidos.pedidos.api.domain.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
+
+import br.com.db1.pedidos.pedidos.api.domain.entity.StatusCliente;
 
 public class ClienteDTO implements Serializable {
 
-	public static final long serialVersionUID = 20L;
+	public static final long serialVersionUID = 23L;
 
+	private Long id;
 	private String nome;
 	private String cpf;
+	private StatusCliente status;
 
 	public ClienteDTO() {
-		super();
+
 	}
+	
 
-	public ClienteDTO(String nome, String cpf) {
+	public ClienteDTO(Long id, String nome, String cpf, StatusCliente status) {
 
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.status = status;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -35,43 +51,35 @@ public class ClienteDTO implements Serializable {
 		this.cpf = cpf;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
+	public StatusCliente getStatus() {
+		return status;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof ClienteDTO)) {
-			return false;
-		}
-		ClienteDTO other = (ClienteDTO) obj;
-		if (cpf == null) {
-			if (other.cpf != null) {
-				return false;
-			}
-		} else if (!cpf.equals(other.cpf)) {
-			return false;
-		}
-		if (nome == null) {
-			if (other.nome != null) {
-				return false;
-			}
-		} else if (!nome.equals(other.nome)) {
-			return false;
-		}
-		return true;
+	public void setStatus(StatusCliente status) {
+		this.status = status;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome,cpf);
+	}
+
+
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (this == obj) {
+	            return true;
+	        }
+	        if (obj == null) {
+	            return false;
+	        }
+	        if (!(obj instanceof ProdutoDTO)) {
+	            return false;
+	        }
+	        ClienteDTO other = (ClienteDTO) obj;
+	        return Objects.equals(nome, other.nome) && Objects.equals(cpf, other.cpf);
+	    }
 	
 	
 

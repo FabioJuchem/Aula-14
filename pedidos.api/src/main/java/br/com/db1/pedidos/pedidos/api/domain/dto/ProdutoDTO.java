@@ -6,9 +6,6 @@ package br.com.db1.pedidos.pedidos.api.domain.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-import br.com.db1.pedidos.pedidos.api.domain.entity.ProdutoStatus;
-import br.com.db1.pedidos.pedidos.api.domain.entity.StatusPedido;
-
 public class ProdutoDTO implements Serializable {
 
     public static final long serialVersionUID = 23L;
