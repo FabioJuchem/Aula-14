@@ -3,6 +3,7 @@ package br.com.db1.pedidos.pedidos.api.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,26 +24,25 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService clienteService;
 
-	@GetMapping(path = "/ativos")
-	public List<ClienteDTO> getAll() {
-		return clienteService.getAllActive();
-	}
-
 	@GetMapping
-	public List<ClienteDTO> getByStatus(@RequestParam("status")StatusCliente status){
+	public List<ClienteDTO> getByStatus(@RequestParam("status") StatusCliente status) {
 		return clienteService.getByStatus(status);
 	}
-	
+
 	@PostMapping
-	public ClienteDTO post(@RequestBody ClienteDTO body){
+	public ClienteDTO post(@RequestBody ClienteDTO body) {
 		return clienteService.salvar(body);
-		
+
 	}
-	
+
 	@PutMapping(path = "/{id}")
-	public ClienteDTO put(@PathVariable("id")Long id,@RequestBody ClienteDTO body){
-		return clienteService.alterar(id,body);
+	public ClienteDTO put(@PathVariable("id") Long id, @RequestBody ClienteDTO body) {
+		return clienteService.alterar(id, body);
 	}
-	
-	
+
+	@DeleteMapping(path = "/{id}")
+	public void delete(@PathVariable("id") Long id) {
+		clienteService.delete(id);
+	}
+
 }

@@ -1,14 +1,12 @@
 package br.com.db1.pedidos.pedidos.api.domain.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import br.com.db1.pedidos.pedidos.api.domain.entity.StatusCliente;
 
 public class ClienteDTO implements Serializable {
 
-	public static final long serialVersionUID = 23L;
-
+	private static final long serialVersionUID = -5708917156046748250L;
 	private Long id;
 	private String nome;
 	private String cpf;
@@ -17,7 +15,6 @@ public class ClienteDTO implements Serializable {
 	public ClienteDTO() {
 
 	}
-	
 
 	public ClienteDTO(Long id, String nome, String cpf, StatusCliente status) {
 
@@ -58,29 +55,5 @@ public class ClienteDTO implements Serializable {
 	public void setStatus(StatusCliente status) {
 		this.status = status;
 	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(nome,cpf);
-	}
-
-
-	 @Override
-	    public boolean equals(Object obj) {
-	        if (this == obj) {
-	            return true;
-	        }
-	        if (obj == null) {
-	            return false;
-	        }
-	        if (!(obj instanceof ProdutoDTO)) {
-	            return false;
-	        }
-	        ClienteDTO other = (ClienteDTO) obj;
-	        return Objects.equals(nome, other.nome) && Objects.equals(cpf, other.cpf);
-	    }
-	
-	
 
 }

@@ -13,7 +13,7 @@ import br.com.db1.pedidos.pedidos.api.domain.entity.ProdutoStatus;
 @Repository
 public interface ProdutoRepository extends CrudRepository<Produto, Long>{
 	
-	List<Produto> findByCodigo(String codigo);
+	Produto findByCodigo(String codigo);
 	
 	List<Produto> findByStatus(ProdutoStatus status);
 	

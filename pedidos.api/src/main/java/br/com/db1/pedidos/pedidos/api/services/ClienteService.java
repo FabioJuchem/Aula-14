@@ -20,9 +20,12 @@ public class ClienteService {
 	public List<ClienteDTO> getAllActive() {
 		return this.getByStatus(StatusCliente.ATIVO);
 	}
+	public List<ClienteDTO> getAllInactive() {
+		return this.getByStatus(StatusCliente.INATIVO);
+	}
 	
 	public List<ClienteDTO> getByStatus(StatusCliente status){
-		return clienteRepository.findByStatus(StatusCliente.ATIVO).stream().map(
+		return clienteRepository.findByStatus(status).stream().map(
 				cliente -> this.clienteToDto(cliente)).collect(Collectors.toList());
 	}
 	public ClienteDTO salvar(ClienteDTO dto){
@@ -41,6 +44,13 @@ public class ClienteService {
 		clienteDataBase.setNome(body.getNome());
 		clienteRepository.save(clienteDataBase);
 		return this.clienteToDto(clienteDataBase);
+	}
+
+	public void delete(Long id) {
+		Cliente clienteDataBase = clienteRepository.getOne(id);
+		clienteDataBase.marcarComoExcluido();
+		clienteRepository.save(clienteDataBase);
+		
 	}
 	
 	

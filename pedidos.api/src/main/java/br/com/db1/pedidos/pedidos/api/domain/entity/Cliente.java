@@ -78,4 +78,10 @@ public class Cliente {
 		return this.id;
 	}
 
+
+	public void marcarComoExcluido() {
+		this.status = StatusCliente.EXCLUIDO;
+		
+	}
+
 }

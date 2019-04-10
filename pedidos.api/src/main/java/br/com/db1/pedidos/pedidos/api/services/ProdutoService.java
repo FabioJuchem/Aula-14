@@ -28,7 +28,7 @@ public class ProdutoService {
 	
 	
 	public List<ProdutoDTO> getByStatus(ProdutoStatus status){
-		return produtoRepository.findByStatus(ProdutoStatus.ATIVO).stream().map(
+		return produtoRepository.findByStatus(status).stream().map(
 				produto -> this.produtoToDto(produto)).collect(Collectors.toList());
 	}
 	public ProdutoDTO salvar(ProdutoDTO dto){

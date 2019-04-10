@@ -22,7 +22,7 @@ public class ProdutoResource {
 	private ProdutoService produtoService;
 	
 	@GetMapping(path = "/ativos")
-	public List<ProdutoDTO> getAll(){
+	public List<ProdutoDTO> getAllActive(){
 		return produtoService.getAllActive();
 	}
 	

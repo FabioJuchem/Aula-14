@@ -35,7 +35,7 @@ public class ProdutoServiceTest {
         List<ProdutoDTO> expected = new ArrayList<>();
         expected.add(new ProdutoDTO("CODIGO", "NOME", 10.0));
         
-        List<ProdutoDTO> actual = produtoService.getAll();
+        List<ProdutoDTO> actual = produtoService.getAllActive();
 
         Assert.assertEquals(expected, actual);
         Assert.assertSame(1, actual.size());
@@ -46,7 +46,7 @@ public class ProdutoServiceTest {
         BDDMockito.when(produtoRepository.findAll()).thenReturn(null);
         
         List<ProdutoDTO> expected = new ArrayList<>();
-        List<ProdutoDTO> actual = produtoService.getAll();
+        List<ProdutoDTO> actual = produtoService.getAllActive();
         Assert.assertEquals(expected, actual);
     }
 }
